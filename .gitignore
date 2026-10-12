@@ -1,0 +1,39 @@
+# =========================
+# Variables de Entorno (¡CRÍTICO!)
+# =========================
+.env
+.env.local
+.env.*
+*.env
+
+# =========================
+# Frontend (Next.js / Node)
+# =========================
+node_modules/
+.next/
+/out/
+/build
+.vercel
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Backend (Python / Machine Learning)
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+.pytest_cache/
+
+# =========================
+# IDEs y SO
+# =========================
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo

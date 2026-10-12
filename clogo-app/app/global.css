@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@layer base {
+    @font-face {
+        font-family: 'ROMANTIC';
+        src: url('./fonts/ROMANTIC.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'LOSTAR';
+        src: url('./fonts/Lostar.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'ReggaeOne-Regular';
+        src: url("./fonts/ReggaeOne-Regular.ttf") format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face{
+        font-family: 'Coolvetica Rg';
+        src: url("./fonts/Coolvetica Rg.otf") format('opentype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Erode-Variable';
+        src: url("./fonts/Erode-Variable.ttf") format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+}
+
+@theme inline {
+    --font-family-romantic: 'ROMANTIC', cursive;
+    --font-family-lostar: 'LOSTAR', cursive;
+    --font-family-reggae-one: 'ReggaeOne-Regular', cursive;
+    --font-family-coolvetica: 'Coolvetica Rg', cursive;
+    --font-family-erode-variable: 'Erode-Variable', cursive;
+}

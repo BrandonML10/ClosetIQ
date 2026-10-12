@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// --- TABLA DE USUARIOS ---
+model Usuario {
+  id               Int      @id @default(autoincrement())
+  username         String
+  email            String   @unique
+  password         String   // Aquí guardaremos la contraseña encriptada
+  rol              String   @default("usuario")
+  estilo_preferido String?  // El signo "?" significa que es opcional al inicio
+  fecha_registro   DateTime @default(now())
+
+  // Relaciones (Prisma las usa para conectar tablas mágicamente)
+  prendas     Prenda[]
+  outfits     Outfit[]
+  calendarios Calendario[]
+}
+
+// --- TABLA DE PRENDAS (El Clóset) ---
+model Prenda {
+  id              Int      @id @default(autoincrement())
+  imagen_url      String?  
+  categoria       String?  // Ej: "Sudadera" (Lo llenará tu IA después)
+  color_principal String?  
+  estado          String   @default("limpio")
+  fecha_creacion  DateTime @default(now())
+
+  // Relación con el Usuario (A quién le pertenece)
+  usuarioId       Int
+  usuario         Usuario  @relation(fields: [usuarioId], references: [id])
+
+  outfits         OutfitPrenda[]
+}
+
+// --- TABLA DE OUTFITS ---
+model Outfit {
+  id             Int      @id @default(autoincrement())
+  nombre         String   // Ej: "Cita casual"
+  fecha_creacion DateTime @default(now())
+
+  usuarioId      Int
+  usuario        Usuario  @relation(fields: [usuarioId], references: [id])
+
+  prendas        OutfitPrenda[]
+  calendarios    Calendario[]
+}
+
+// --- TABLA INTERMEDIA (Para unir Outfits con múltiples Prendas) ---
+model OutfitPrenda {
+  id        Int    @id @default(autoincrement())
+  outfitId  Int
+  prendaId  Int
+
+  outfit    Outfit @relation(fields: [outfitId], references: [id])
+  prenda    Prenda @relation(fields: [prendaId], references: [id])
+}
+
+// --- TABLA CALENDARIO ---
+model Calendario {
+  id         Int      @id @default(autoincrement())
+  fecha      DateTime
+  ocasion    String?  
+
+  usuarioId  Int
+  usuario    Usuario  @relation(fields: [usuarioId], references: [id])
+  
+  outfitId   Int
+  outfit     Outfit   @relation(fields: [outfitId], references: [id])
+}
