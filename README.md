@@ -25,8 +25,8 @@ Thanks to the Docker architecture, you don't need to manually install Node.js de
 
 1. **Clone this repository:**
 ```bash
-git clone [https://github.com/your-user/Web-Project.git]
-cd Web-Project
+git clone [https://github.com/your-user/ClosetIQ.git]
+cd CLosetIQ
 ```
 
 2. **Set up your environment:**
