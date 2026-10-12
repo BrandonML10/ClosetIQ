@@ -1,5 +1,5 @@
 # =========================
-# Variables de Entorno (¡CRÍTICO!)
+# Variables de Entorno 
 # =========================
 .env
 .env.local

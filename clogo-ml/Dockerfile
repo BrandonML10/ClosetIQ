@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# 2. El combo definitivo de dependencias de Python
+# 2. dependencias de Python
 RUN pip install --no-cache-dir \
     fastapi \
     uvicorn \

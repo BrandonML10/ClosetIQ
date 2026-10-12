@@ -5,7 +5,7 @@ import io
 from classifier import model, processor
 
 # Reusamos el CLIP ya cargado en classifier.py para no duplicar memoria.
-# El primer prompt es siempre el de "prenda"; los demás son distractores.
+# El primer prompt es siempre el de "prenda" los demás son distractores.
 VALIDATION_PROMPTS = [
     "a photo of a piece of clothing",
     "a photo of a person",

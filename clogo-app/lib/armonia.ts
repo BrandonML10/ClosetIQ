@@ -85,7 +85,7 @@ export interface OpcionesOutfit {
  * Selecciona un outfit pequeño y armónico:
  *   - 1 top
  *   - 1 bottom
- *   - 1 calzado (si existe en el clóset; opcional)
+ *   - 1 calzado (si existe en el clóset opcional)
  *
  * Pasar `opciones.excluirIds` para evitar repetir prendas de un outfit previo.
  */

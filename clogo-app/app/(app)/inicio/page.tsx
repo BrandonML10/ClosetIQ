@@ -58,7 +58,7 @@ export default function InicioPage() {
   const hora = new Date().getHours();
   const saludo = hora < 12 ? "Buenos días" : hora < 18 ? "Buenas tardes" : "Buenas noches";
 
-  // NUEVO: Agregamos "Ver resumen de mi clóset" a tu lista de acciones
+
   const ACCIONES = [
     { label: "Ver outfit de hoy", href: "/hoy" },
     { label: "Añadir prenda al closet", href: "/onboarding/camera" },

@@ -7,9 +7,7 @@ import io
 model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
 processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 
-# EL CEREBRO MEJORADO: 
-# Clave en inglés (para máxima precisión de la IA) -> Valor en español (para tu BD y filtros)
-# Agregar "a photo of..." mejora drásticamente la puntería de CLIP.
+# EL CEREBRO 
 CATEGORY_MAP = {
     "a photo of a casual t-shirt": "Playera",
     "a photo of a formal button down shirt": "Camisa",
@@ -28,7 +26,7 @@ CATEGORY_MAP = {
     "a photo of sandals": "Sandalias"
 }
 
-# Extraemos solo las frases en inglés para dárselas a la IA
+# solo las frases en inglés para dárselas a la IA
 CLIP_PROMPTS = list(CATEGORY_MAP.keys())
 
 def classify_garment(image_bytes: bytes) -> dict:
@@ -53,7 +51,7 @@ def classify_garment(image_bytes: bytes) -> dict:
     results = []
     
     for prob, idx in zip(top3.values, top3.indices):
-        # Tomamos la frase en inglés ganadora
+        # frase en inglés ganadora
         english_prompt = CLIP_PROMPTS[idx]
         # La traducimos al español usando nuestro diccionario
         spanish_category = CATEGORY_MAP[english_prompt]

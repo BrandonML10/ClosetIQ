@@ -12,7 +12,7 @@ export async function GET(request: Request) {
 
     const usuarioId = parseInt(usuarioIdRaw, 10);
 
-    // 1. AUTO-LIMPIEZA: Buscar outfits fantasma (sin prendas asociadas)
+    // 1. AUTO-LIMPIEZA: Buscar outfits fantasma 
     const outfitsVacios = await prisma.outfit.findMany({
       where: {
         usuarioId,
@@ -33,7 +33,7 @@ export async function GET(request: Request) {
       });
     }
 
-    // 2. Traer los outfits válidos que sobrevivieron a la limpieza
+    // 2. Traer los outfits válidos despues de la limpieza
     const outfits = await prisma.outfit.findMany({
       where: { usuarioId },
       include: {

@@ -57,7 +57,7 @@ export default function StyleSelectionPage() {
   const [selected, setSelected] = useState<string[]>([]);
   const [guardando, setGuardando] = useState(false);
 
-  // Si el usuario ya tiene prendas, no debería estar en el onboarding: lo mandamos a /hoy.
+  // Si el usuario ya tiene prendas, no debería estar en el onboarding lo mandamos a /hoy.
   //useEffect(() => {
     //const raw = localStorage.getItem("usuario");
     //if (!raw) return;

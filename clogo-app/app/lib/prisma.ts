@@ -1,4 +1,3 @@
-// ¡Nota cómo ahora importamos desde tu propia carpeta, no desde @prisma/client!
 import { PrismaClient } from "../../prisma/generated/client";
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };

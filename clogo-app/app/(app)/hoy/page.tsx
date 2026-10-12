@@ -85,7 +85,7 @@ export default function HoyPage() {
   const [ocasion, setOcasion] = useState("");
   const [clima, setClima] = useState<{ temp: number; ciudad: string } | null>(null);
   
-  // NUEVO: La memoria de prendas rechazadas
+
   const [historialExcluidos, setHistorialExcluidos] = useState<number[]>([]);
 
   useEffect(() => {
@@ -140,11 +140,11 @@ export default function HoyPage() {
   function handleDislike() {
     if (!usuarioId || cargando || regenerando) return;
     
-    // NUEVO: Juntamos las prendas que acabas de rechazar con las que ya habías rechazado antes
+  
     const prendasActuales = data?.outfit.prendas.map((p) => p.id) ?? [];
     const nuevaListaExcluidos = [...historialExcluidos, ...prendasActuales];
     
-    setHistorialExcluidos(nuevaListaExcluidos); // Guardamos en la memoria
+    setHistorialExcluidos(nuevaListaExcluidos); // Guardar en la memoria
     setRegenerando(true);
     setLikeActivo(false);
     cargarOutfit(usuarioId, true, nuevaListaExcluidos, ocasion, clima?.temp);
@@ -157,7 +157,7 @@ export default function HoyPage() {
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && usuarioId) {
       setRegenerando(true);
-      setHistorialExcluidos([]); // NUEVO: Si cambias de ocasión, borramos la memoria para empezar de cero
+      setHistorialExcluidos([]); // Si cambias de ocasión, borrar la memoria para empezar de cero
       cargarOutfit(usuarioId, true, [], ocasion, clima?.temp);
     }
   }

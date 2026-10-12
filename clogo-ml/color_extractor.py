@@ -10,12 +10,10 @@ def extract_colors(image_bytes: bytes, n_colors: int = 5) -> list[str]:
 
     if image.mode == "RGBA":
         arr = np.array(image)
-        # Solo píxeles opacos (la prenda); descartamos el fondo transparente.
         mask = arr[..., 3] > 128
         pixels = arr[mask][:, :3]
 
-        # Si quedaron muy pocos píxeles (imagen casi vacía), caemos a la
-        # imagen completa convertida a RGB para no romper KMeans.
+       
         if len(pixels) < n_colors * 4:
             pixels = np.array(image.convert("RGB")).reshape(-1, 3)
     else:

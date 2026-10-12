@@ -4,7 +4,7 @@ import { prisma } from "../../../lib/prisma";
 // PUT: Para ACTUALIZAR una prenda
 export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    // 1. Esperamos a que Next.js desempaque los parámetros de la URL
+    // 1. Esperar a que Next.js desempaque los parámetros de la URL
     const resolvedParams = await params;
     const id = parseInt(resolvedParams.id);
     

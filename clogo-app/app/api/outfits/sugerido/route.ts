@@ -12,7 +12,7 @@ export async function GET(request: Request) {
     const regenerar = searchParams.get("regenerar") === "true";
     const excluirIdsRaw = searchParams.get("excluirIds");
     
-    // Capturamos las variables dinámicas del frontend
+    // Capturar las variables dinámicas del frontend
     const ocasionRaw = searchParams.get("ocasion")?.toLowerCase() || "";
     const tempRaw = searchParams.get("temp");
     const temperatura = tempRaw ? parseFloat(tempRaw) : null;
@@ -79,7 +79,7 @@ export async function GET(request: Request) {
       }
     }
 
-    // Traemos TODA la ropa del usuario
+    // Traer toda la ropa del usuario
     let prendas = await prisma.prenda.findMany({ where: { usuarioId } });
 
     // Motor de Reglas de Filtrado
@@ -90,7 +90,7 @@ export async function GET(request: Request) {
       // REGLAS DE OCASIÓN
       if (ocasionRaw) {
         if (ocasionRaw.includes("boda") || ocasionRaw.includes("lujos") || ocasionRaw.includes("formal") || ocasionRaw.includes("elegante")) {
-          // Bilingüe, sin la palabra "pants" para evitar choques con el modelo en inglés
+
           const prohibidasFormal = ["sudadera", "short", "bermuda", "chanclas", "deportivo", "playera", "sweatpants", "t-shirt", "hoodie", "sneakers"];
           if (prohibidasFormal.some(prohibida => cat.includes(prohibida))) mantenerPrenda = false;
         }

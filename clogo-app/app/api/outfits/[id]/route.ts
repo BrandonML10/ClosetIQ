@@ -3,7 +3,7 @@ import { prisma } from "../../../lib/prisma";
 
 export async function DELETE(
   request: Request,
-  // 1. Le decimos a TypeScript que params es una Promesa
+  // 1. Ejecutar la promesa
   { params }: { params: Promise<{ id: string }> } 
 ) {
   try {

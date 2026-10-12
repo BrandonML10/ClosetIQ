@@ -46,8 +46,7 @@ export default function CameraPage() {
       fd.append("file", file);
       fd.append("usuarioId", String(usuarioId));
 
-      // NOTA: Si vas a usar el "engaño" sin la IA prendida, recuerda que este fetch 
-      // llama a la API de prendas. Asegúrate de tener tu parche aplicado en el route.ts
+
       const res = await fetch("/api/prendas", { method: "POST", body: fd });
       const data = await res.json().catch(() => ({}));
 
@@ -81,7 +80,6 @@ export default function CameraPage() {
     }
   }
 
-  // MAGIA AQUÍ: Ahora se completa con tan solo 1 prenda en lugar de 5
   const completo = count >= 1;
 
   return (
@@ -170,7 +168,7 @@ export default function CameraPage() {
           Has subido {count} prenda{count !== 1 ? 's' : ''} en esta sesión
         </p>
 
-        {/* Continuar - Aparecerá mágicamente al subir la primera prenda */}
+        {/* Continuar - Aparecerá al subir la primera prenda */}
         {completo && (
           <div className="flex justify-center pt-6">
             <div className="w-[243px] h-[63px] rounded-full bg-gradient-to-r from-[#F9F023] via-[#D6006E] to-[#8C52FF] p-[2px] shadow-[-2px_6px_4px_0px_rgba(0,0,0,0.33)]">
